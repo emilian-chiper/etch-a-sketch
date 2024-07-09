@@ -15,13 +15,24 @@
   <body>
     <div class="wrapper __col">
       <div class="buttons">
-        <button class="generate"></button>
+        <form>
+          <label for="num">tiles / side</label>
+          <input
+            type="number"
+            id="num"
+            name="num"
+            min="1"
+            max="100"
+            placeholder="1-100"
+          />
+        </form>
+        <button class="generate">gen</button>
         <button class="clean"></button>
         <button class="clear"></button>
         <button class="rbg"></button>
         <button class="greyscale"></button>
       </div>
-      <div class="grid __col"></div>
+      <div class="grid"></div>
     </div>
   </body>
 </html>

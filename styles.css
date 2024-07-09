@@ -12,7 +12,6 @@ html {
 body {
   min-height: 100vh;
   min-width: 100vw;
-  overflow: hidden;
 
   display: flex;
   flex-direction: column;
@@ -41,16 +40,37 @@ button {
 .wrapper {
   margin: 1em;
   border: 1px solid black;
+  border-radius: 10px;
   padding: 0.5em;
 
   background-color: beige;
 }
 
+.buttons {
+  padding: 0.5em 1em 0 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1em;
+}
+
+#num {
+  width: 4em;
+}
+
 .grid {
-  width: 80vh;
-  height: 80vh;
+  width: 600px;
+  height: 600px;
   margin: 1em;
-  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 
   background-color: white;
+}
+
+.tile {
+  display: flex;
 }
