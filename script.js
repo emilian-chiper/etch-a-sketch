@@ -4,7 +4,9 @@
 const gridElement = document.querySelector('.grid');
 const inputField = document.getElementById('num');
 const buttonGen = document.querySelector('.generate');
+const buttonBlack = document.querySelector('.black');
 const tiles = [];
+let accent = 'black';
 
 // Create grid tiles
 const createTiles = function () {
@@ -34,10 +36,25 @@ const createTiles = function () {
       tiles.push(tile);
     });
 
-  console.log(tiles);
-
   // Disable input field
   inputField.disabled = true;
+
+  // Handle colouring
+  targetTiles(tiles, 'mouseover', colorTiles);
 };
 
+// Assign event listeners to grid tiles
+const targetTiles = function (tilesArray, eventType, eventHandler) {
+  tilesArray.forEach(function (tile) {
+    tile.addEventListener(eventType, eventHandler);
+  });
+};
+
+// Handle tile colouring
+const colorTiles = function (e) {
+  if (!e.target.classList.contains('tile')) return;
+  e.target.style.backgroundColor = accent;
+};
+
+// Event listeners
 buttonGen.addEventListener('click', createTiles);
