@@ -5,6 +5,10 @@ const gridElement = document.querySelector('.grid');
 const inputField = document.getElementById('num');
 const buttonGen = document.querySelector('.generate');
 const buttonBlack = document.querySelector('.black');
+const buttonRGB = document.querySelector('.rgb');
+const buttonGrayscale = document.querySelector('.grayscale');
+const buttonClean = document.querySelector('.clean');
+const buttonClear = document.querySelector('.clear');
 const tiles = [];
 let accent = 'black';
 
@@ -50,11 +54,24 @@ const targetTiles = function (tilesArray, eventType, eventHandler) {
   });
 };
 
+// Get random RGB color
+const getRandRGB = function () {
+  return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(
+    Math.random() * 256
+  )}, ${Math.floor(Math.random() * 256)})`;
+};
+
 // Handle tile colouring
 const colorTiles = function (e) {
   if (!e.target.classList.contains('tile')) return;
-  e.target.style.backgroundColor = accent;
+  e.target.style.backgroundColor = accent === 'rgb' ? getRandRGB() : accent;
+};
+
+const colorRGB = function () {
+  accent = 'rgb';
+  targetTiles(tiles, 'mouseover, colorTiles');
 };
 
 // Event listeners
 buttonGen.addEventListener('click', createTiles);
+buttonRGB.addEventListener('click', colorRGB);
