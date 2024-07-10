@@ -28,6 +28,7 @@ const createTiles = function () {
     .map(() => {
       const tile = document.createElement('div');
       tile.classList.add('tile');
+      tile.dataset.darkness = 0; // Initialize darkness level
 
       // Style tile element
       tile.style.width = `${tileWidth}px`;
@@ -61,17 +62,48 @@ const getRandRGB = function () {
   )}, ${Math.floor(Math.random() * 256)})`;
 };
 
-// Handle tile colouring
-const colorTiles = function (e) {
-  if (!e.target.classList.contains('tile')) return;
-  e.target.style.backgroundColor = accent === 'rgb' ? getRandRGB() : accent;
+// Coloring functions for different modes
+const colorFunctions = {
+  black: tile => {
+    tile.style.backgroundColor = 'black';
+  },
+  rgb: tile => {
+    tile.style.backgroundColor = getRandRGB();
+  },
+  grayscale: tile => {
+    let darkness = parseFloat(tile.dataset.darkness);
+    if (darkness < 1) {
+      darkness += 0.1;
+      tile.dataset.darkness = darkness;
+      const grayValue = Math.floor(255 * (1 - darkness));
+      tile.style.backgroundColor = `rgb(${grayValue}, ${grayValue}, ${grayValue})`;
+    }
+  },
 };
 
-const colorRGB = function () {
-  accent = 'rgb';
-  targetTiles(tiles, 'mouseover, colorTiles');
+// Handle tile coloring
+const colorTiles = function (e) {
+  if (!e.target.classList.contains('tile')) return;
+  colorFunctions[accent](e.target);
+};
+
+// Generic function to switch color mode
+const switchColorMode = function (mode) {
+  accent = mode;
+  targetTiles(tiles, 'mouseover', colorTiles);
+};
+
+// Clean board, preserving the tiles
+const wipeBoard = function () {
+  tiles.forEach(tile => {
+    tile.style.backgroundColor = '#fff';
+    tile.style.opacity = '1';
+  });
 };
 
 // Event listeners
 buttonGen.addEventListener('click', createTiles);
-buttonRGB.addEventListener('click', colorRGB);
+buttonRGB.addEventListener('click', () => switchColorMode('rgb'));
+buttonGrayscale.addEventListener('click', () => switchColorMode('grayscale'));
+buttonBlack.addEventListener('click', () => switchColorMode('black'));
+buttonClean.addEventListener('click', wipeBoard);
