@@ -101,17 +101,9 @@ const wipeBoard = function () {
   });
 };
 
-// Reset board
-const clearBoard = function () {
-  gridElement.innerHTML = '';
-  inputField.disabled = false;
-  inputField.value = 1;
-};
-
 // Event listeners
 buttonGen.addEventListener('click', createTiles);
 buttonRGB.addEventListener('click', () => switchColorMode('rgb'));
 buttonGrayscale.addEventListener('click', () => switchColorMode('grayscale'));
 buttonBlack.addEventListener('click', () => switchColorMode('black'));
 buttonClean.addEventListener('click', wipeBoard);
-buttonClear.addEventListener('click', clearBoard);
