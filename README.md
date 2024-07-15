@@ -59,7 +59,7 @@ The application logic is implemented in `script.js`. Here are the details:
 
 The main function that initializes the application.
 
-### batnCallbacks
+### btnCallbacks
 
 ```javascript
 const btnCallbacks = [
