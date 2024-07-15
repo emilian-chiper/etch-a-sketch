@@ -36,7 +36,6 @@ Open the `index.html` in your web browser to view the application.
 3. **Color Mode Buttons:** Use the color mode buttons to change how the tiles are colored:
 
    - **Black**: Colors the tile black on mouseover.
-
    - **Random RGB**: Colors the tile with a random RGB color on mouseover.
    - **Grayscale**: Colors the tile with increasing darkness on mouseover.
 
