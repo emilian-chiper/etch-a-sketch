@@ -6,11 +6,13 @@ A simple sketchpad application that allows users to create a customizable grid o
 
 **Dynamic Grid Creation**: Generate a grid based on user input for the number of tiles (1-100).
 
-- **Multiple Color Modes**:
-  - **Black**: Color tiles in solid black.
-  - **Random RGB**: Color tiles with randomly generated RGB colors.
-  - **Grayscale**: Color tiles with increasing darkness to create a grayscale effect.
-- **Reset Functionality**: Clear the board or reset it entirely, allowing for a fresh start.
+**Multiple Color Modes**:
+
+- **Black**: Color tiles in solid black.
+- **Random RGB**: Color tiles with randomly generated RGB colors.
+- **Grayscale**: Color tiles with increasing darkness to create a grayscale effect.
+
+**Reset Functionality**: Clear the board or reset it entirely, allowing for a fresh start.
 
 ## Installation
 
